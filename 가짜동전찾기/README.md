@@ -35,6 +35,7 @@
 
 
 3. 테스트 케이스 설계
+```
 테스트1 //동전 받는 개수 작동
 int main() {
 	int n;
@@ -53,3 +54,4 @@ int main() {
 //main함수에 아래 코드 추가
 int coins10[10] = { 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 };
 fake = findFakeCoin(0, 9, coins10);
+```
