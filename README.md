@@ -1,2 +1,2 @@
-# Algorithm_7_A
+# Algorithm_7-A
 알고리즘 7-A조
