@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// °¡Â¥ µ¿ÀüÀ» Ã£´Â ÇÔ¼ö
+// ê°€ì§œ ë™ì „ì„ ì°¾ëŠ” í•¨ìˆ˜
 int findFakeCoin(int left, int right, int coins[]) {
 
-	// Àú¿ï¿¡ µ¿ÀüÀ» ¿Ã·Á¼­ ¾çÆÈ Àú¿ïÀÇ ±ÕÇüÀ» ¸ÂÃã
+	// ì €ìš¸ì— ë™ì „ì„ ì˜¬ë ¤ì„œ ì–‘íŒ” ì €ìš¸ì˜ ê· í˜•ì„ ë§ì¶¤
 	int sumLeft = 0, sumRight = 0;
 	int mid = (left + right) / 2;
 
@@ -17,30 +17,30 @@ int findFakeCoin(int left, int right, int coins[]) {
 	}
 
 	if (sumLeft < sumRight) {
-		// ¿À¸¥ÂÊ Àú¿ïÀÌ ¹«°Å¿ò
+		// ì˜¤ë¥¸ìª½ ì €ìš¸ì´ ë¬´ê±°ì›€
 		if (left == right - 1) {
-			// °¡Â¥ µ¿ÀüÀ» Ã£À½
+			// ê°€ì§œ ë™ì „ì„ ì°¾ìŒ
 			return right;
 		}
-		// ¿À¸¥ÂÊ Àú¿ï¿¡¼­ °¡Â¥ µ¿ÀüÀ» Ã£À½
+		// ì˜¤ë¥¸ìª½ ì €ìš¸ì—ì„œ ê°€ì§œ ë™ì „ì„ ì°¾ìŒ
 		return findFakeCoin(mid + 1, right, coins);
 	}
 	else if (sumLeft > sumRight) {
-		// ¿ŞÂÊ Àú¿ïÀÌ ¹«°Å¿ò
+		// ì™¼ìª½ ì €ìš¸ì´ ë¬´ê±°ì›€
 		if (left == right - 1) {
-			// °¡Â¥ µ¿ÀüÀ» Ã£À½
+			// ê°€ì§œ ë™ì „ì„ ì°¾ìŒ
 			return left;
 		}
-		// ¿ŞÂÊ Àú¿ï¿¡¼­ °¡Â¥ µ¿ÀüÀ» Ã£À½
+		// ì™¼ìª½ ì €ìš¸ì—ì„œ ê°€ì§œ ë™ì „ì„ ì°¾ìŒ
 		return findFakeCoin(left, mid, coins);
 	}
 	else {
-		// ±ÕÇüÀ» ÀÌ·ë
+		// ê· í˜•ì„ ì´ë£¸
 		if (left == right - 1) {
-			// °¡Â¥ µ¿ÀüÀ» Ã£À½
-			return -1; // °¡Â¥ µ¿ÀüÀÌ ¾ø´Â °æ¿ì¸¦ -1·Î Ã³¸®
+			// ê°€ì§œ ë™ì „ì„ ì°¾ìŒ
+			return -1; // ê°€ì§œ ë™ì „ì´ ì—†ëŠ” ê²½ìš°ë¥¼ -1ë¡œ ì²˜ë¦¬
 		}
-		// ¾çÂÊ Àú¿ï¿¡¼­ °¡Â¥ µ¿ÀüÀ» Ã£À½
+		// ì–‘ìª½ ì €ìš¸ì—ì„œ ê°€ì§œ ë™ì „ì„ ì°¾ìŒ
 		return findFakeCoin(mid + 1, right, coins);
 	}
 }
@@ -49,25 +49,25 @@ int main() {
 	int n;
 	int fake;
 
-	printf("µ¿ÀüÀÇ °³¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+	printf("ë™ì „ì˜ ê°œìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 	scanf_s("%d", &n);
-	int* coins = (int*)malloc(sizeof(int) * n); // µ¿Àû ¸Ş¸ğ¸® ÇÒ´ç
+	int* coins = (int*)malloc(sizeof(int) * n); // ë™ì  ë©”ëª¨ë¦¬ í• ë‹¹
 
 	for (int i = 0; i < n; i++) {
-		printf("%d¹ø µ¿ÀüÀÇ ¹«°Ô¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ", i + 1);
+		printf("%dë²ˆ ë™ì „ì˜ ë¬´ê²Œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ", i + 1);
 		scanf_s("%d", &coins[i]);
 	}
 
 	fake = findFakeCoin(0, n - 1, coins);
 	if (fake == -1) {
-		printf("°¡Â¥ µ¿ÀüÀÌ ¾ø½À´Ï´Ù.\n");
+		printf("ê°€ì§œ ë™ì „ì´ ì—†ìŠµë‹ˆë‹¤.\n");
 	}
 
 	else {
-		printf("°¡Â¥ µ¿ÀüÀº %d¹øÂ° µ¿ÀüÀÔ´Ï´Ù.\n", fake + 1);
+		printf("ê°€ì§œ ë™ì „ì€ %dë²ˆì§¸ ë™ì „ì…ë‹ˆë‹¤.\n", fake + 1);
 	}
 
-	free(coins); // µ¿Àû ¸Ş¸ğ¸® ÇØÁ¦
+	free(coins); // ë™ì  ë©”ëª¨ë¦¬ í•´ì œ
 
 	return 0;
 }
